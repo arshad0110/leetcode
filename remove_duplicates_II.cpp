@@ -3,25 +3,19 @@
 
 using namespace std;
 
-int removeDuplicates(vector<int>& nums){
-        int size = nums.size();
-        int i,j{0},temp;
-        for(i = 0;i<size;++i){
-            if(nums[i] != nums[j]){
-                temp = nums[i-1];
-                j++;
-                if(nums[j] == temp){
-                    j++;
-                }
-                nums[j] = nums[i];
-            }
-        }
-        //cout<<temp<<endl;
-        return (nums[size-1] == temp) ? j+2: j+1;
+int removeDuplicates(vector<int>& nums) {
+	size_t k = 0;
+	for(size_t i = 0; i < nums.size(); i++){
+		if(k < 2 || nums[k-2] < nums[i]){
+			nums[k] = nums[i];
+			k++;
+		}
+	}
+	return k;   
 }
 
 int main(){
-    vector<int> nums{1,1,2,2,2,2,3,4,4,4,4,5,5};
+    vector<int> nums{0,0,1,1,1,1,2,3,3,3};
     cout<<"size is:"<<removeDuplicates(nums)<<endl;
     for(auto &i:nums){
         cout<<i<<" ";
