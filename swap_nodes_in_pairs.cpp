@@ -1,3 +1,4 @@
+//iterative
 class Solution {
 public:
     ListNode*  swapPairs(ListNode* head){
@@ -16,6 +17,25 @@ public:
     }
     return dummy->next;
     
+    
+}
+};
+
+//recursive approach
+class Solution {
+public:
+        ListNode*  swapPairs(ListNode* head){
+        
+        if(head == nullptr || head->next == nullptr)
+            return head;
+        ListNode* curr = head,*temp = head->next;
+        curr->next = temp->next;
+        temp-> next = curr;
+        head = temp;
+            
+        head->next->next = swapPairs(head->next->next);
+        
+        return head;
     
 }
 };
