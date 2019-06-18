@@ -63,32 +63,30 @@ using namespace std;
 // BY BOYER MOORE ALGORITHM
 
 int main(){
-    int arr[] = { 1, 8, 7, 4, 1, 2, 2, 2, 2, 2, 2 };
+    int arr[] = {2,2,1,1,1,2,2 };
     int size = sizeof(arr)/sizeof(arr[0]);
     int candidate = arr[0];
     int count{1};
-    for (int i{1}; i<size;++i){
-        if (count != 0){
+    for(int i{1};i< size; ++i){
             if(arr[i] == candidate){
                 count++;
             }else{
                 count--;
+                if(count == 0){
+                    candidate = arr[i];
+                    count = 1;
+                }
             }
-        }else{
-            candidate = arr[i];
-            count = 1;
         }
-        
-    }
-    count = 0;
-    for(int i {0}; i<size;++i){
-        if(arr[i] == candidate){
-            count++;
-        }
-    }
-    if(count >= (size/2)+1){
+    // count = 0;
+    // for(int i {0}; i<size;++i){
+    //     if(arr[i] == candidate){
+    //         count++;
+    //     }
+    // }
+    // if(count >= (size/2)+1){
         cout<<candidate<<endl;
-    }else{
-        cout<<"-1"<<endl;
-    }
+    // }else{
+    //     cout<<"-1"<<endl;
+    // }
 }
